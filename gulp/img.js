@@ -8,11 +8,11 @@ const webp = require('gulp-webp');
 module.exports = function img(env='dev') {
     if (env === 'dev') {
         return multipipe(
-            src(['src/assets/*.{jpg,jpeg,png}', '!src/assets/icons/*.svg']),
+            src(['src/assets/**/*.{jpg,jpeg,png}', '!src/assets/icons/*.svg']),
             newer('src/img'),
             webp({ quality: 70 }),
             dest('src/assets'),
-            src(['src/assets/*.{jpg,jpeg,png,gif,svg,webp}', '!src/assets/icons/**/*.svg']),
+            src(['src/assets/**/*.{jpg,jpeg,png,gif,svg,webp}', '!src/assets/icons/**/*.svg']),
             imagemin([
                 imagemin.gifsicle({ interlaced: true }),
                 imagemin.mozjpeg({
@@ -28,7 +28,7 @@ module.exports = function img(env='dev') {
             )
     }
     return multipipe(
-        src(['src/*.{jpg,jpeg,png,gif,svg,webp}', '!src/assets/icons/**/*.svg']),
+        src(['src/**/*.{jpg,jpeg,png,gif,svg,webp}', '!src/assets/icons/**/*.svg']),
         dest('build/img'),
     )
 }
