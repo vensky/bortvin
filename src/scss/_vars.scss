@@ -1,0 +1,13 @@
+$font-stack-sans-serif: PT Sans, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-stack-serif: Georgia, Times, "Times New Roman", serif;
+
+$font-family-base: $font-stack-sans-serif;
+$font-size-root: 18px;
+
+$font-base: 400 $font-size-root $font-stack-sans-serif;
+
+$main-color: #ff0000;
+
+$pad: 1024px;
+$tablet: 768px;
+$phone-max: 640px;
