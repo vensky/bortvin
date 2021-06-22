@@ -10,7 +10,7 @@ let currentSlideIndex = 0;
 const $paginationList = document.querySelector('.slider__pagination');
 const $paginations = $paginationList.querySelectorAll('.slider__pagination-item');
 
-const toSlide = (direction) => {
+const goToSlide = (direction) => {
     $slides[currentSlideIndex].classList.remove('slider__slide--shown');
 
     for (let i = 0; i < $slides.length; i++) {
@@ -29,11 +29,13 @@ const toSlide = (direction) => {
     $paginations[currentSlideIndex].classList.add('slider__pagination-item--current');
 }
 
-$btnNext.addEventListener('click', () => toSlide('next'));
-$btnPrev.addEventListener('click', () => toSlide('prev'));
+$btnNext.addEventListener('click', () => goToSlide('next'));
+$btnPrev.addEventListener('click', () => goToSlide('prev'));
 $paginationList.addEventListener('click', (event) => {
-    if (event.target.dataset.slideNumber) {
-        currentSlideIndex = event.target.dataset.slideNumber - 1;
+    let paginationItem = event.target.closest('li');
+
+    if (paginationItem) {
+        currentSlideIndex = paginationItem.dataset.slideNumber - 1;
 
         for (let i = 0; i < $slides.length; i++) {
             $slides[i].classList.remove('slider__slide--shown');
