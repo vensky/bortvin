@@ -32,13 +32,15 @@ const toSlide = (direction) => {
 $btnNext.addEventListener('click', () => toSlide('next'));
 $btnPrev.addEventListener('click', () => toSlide('prev'));
 $paginationList.addEventListener('click', (event) => {
-    currentSlideIndex = event.target.dataset.slideNumber - 1;
+    if (event.target.dataset.slideNumber) {
+        currentSlideIndex = event.target.dataset.slideNumber - 1;
 
-    for (let i = 0; i < $slides.length; i++) {
-        $slides[i].classList.remove('slider__slide--shown');
-        $paginations[i].classList.remove('slider__pagination-item--current');
+        for (let i = 0; i < $slides.length; i++) {
+            $slides[i].classList.remove('slider__slide--shown');
+            $paginations[i].classList.remove('slider__pagination-item--current');
+        }
+
+        $slides[currentSlideIndex].classList.add('slider__slide--shown');
+        $paginations[currentSlideIndex].classList.add('slider__pagination-item--current');
     }
-
-    $slides[currentSlideIndex].classList.add('slider__slide--shown');
-    $paginations[currentSlideIndex].classList.add('slider__pagination-item--current');
 });

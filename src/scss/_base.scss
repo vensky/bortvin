@@ -5,9 +5,9 @@
 }
 
 body {
+    min-width: 280px;
+    margin: 0;
     background-color: #fff;
     color: #000;
     font: $font-base;
-    margin: 0;
-    min-width: 280px;
 }

@@ -1,5 +1,5 @@
-$font-stack-sans-serif: 'Open Sans', "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
-$font-stack-serif: Georgia, Times, "Times New Roman", serif;
+$font-stack-sans-serif: 'Open Sans', "Segoe UI", roboto, "Helvetica Neue", helvetica, arial, sans-serif;
+$font-stack-serif: georgia, times, "Times New Roman", serif;
 
 $font-family-base: $font-stack-sans-serif;
 $font-size-root: 18px;
@@ -8,6 +8,5 @@ $font-base: 400 $font-size-root $font-stack-sans-serif;
 
 $main-color: #000;
 
-$pad: 1024px;
-$tablet: 768px;
-$phone-max: 640px;
+$laptop: 1171px;
+$tablet: 769px;
