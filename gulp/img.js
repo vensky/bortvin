@@ -28,7 +28,7 @@ module.exports = function img(env='dev') {
             )
     }
     return multipipe(
-        src(['src/**/*.{jpg,jpeg,png,gif,svg,webp}', '!src/assets/icons/**/*.svg']),
+        src(['src/img/**/*.{jpg,jpeg,png,gif,svg,webp}', '!src/assets/icons/**/*.svg']),
         dest('build/img'),
     )
 }

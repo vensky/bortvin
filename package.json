@@ -7,7 +7,8 @@
     "start": "NODE_ENV=dev npx gulp start",
     "imgmin": "NODE_ENV=dev npx gulp img",
     "test": "NODE_ENV=test npx gulp test",
-    "build": "NODE_ENV=build npx gulp test && npx gulp build",
+    "fix": "npx stylelint 'src/scss/**/*/scss' --fix",
+    "build": "NODE_ENV=build npx gulp build",
     "prepare": "husky install && npx husky add .husky/\"npm test\""
   },
   "repository": {

@@ -1,22 +1,29 @@
 .btn {
     display: inline-block;
+    padding: 9px 24px;
     border: 1px solid #ff891e;
     background-color: #ff891e;
-    color: #fff;
-    font-size: 13px;
-    padding: 9px 24px;
     border-radius: 3px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 13px;
+    text-align: center;
     text-decoration: none;
     text-transform: uppercase;
-    text-align: center;
+    transition: transform 0.15s ease-out;
 
-    @media (min-width: $laptop) {
+    @media (min-width: $laptop) and (min-height: $max) {
+        padding: 11px 30px;
         font-size: 16px;
     }
 
+    &:hover {
+        transform: scale(1.05);
+    }
+
     &--transparent {
-        border: 1px solid #000;
-        color: #000;
+        border-color: #212121;
         background-color: transparent;
+        color: #000;
     }
 }

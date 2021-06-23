@@ -1,0 +1,137 @@
+@import "_btn";
+
+@import "_pagination";
+
+.slider {
+    position: relative;
+    height: 100vh;
+
+    @media (min-width: $tablet) and (max-height: 600px) {
+        min-height: 640px;
+    }
+
+    &__list {
+        position: relative;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    &__item {
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 0.25s ease;
+
+        &--shown {
+            z-index: 2;
+            opacity: 1;
+        }
+    }
+
+    &__img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__container {
+        position: relative;
+        display: flex;
+        max-width: 375px;
+        min-height: 100%;
+        justify-content: flex-end;
+        padding: 45px 15px;
+        margin: 0 auto;
+
+        @media (min-width: $tablet) {
+            max-width: 1122px;
+            padding: 95px 90px;
+        }
+
+        @media (min-width: $laptop) {
+            max-width: 1320px;
+        }
+    }
+
+    &__body {
+        margin: auto;
+        text-align: center;
+
+        @media (min-width: $tablet) {
+            width: 51%;
+            margin: auto 0;
+            text-align: left;
+        }
+
+        @media (min-width: $laptop) {
+            width: 57%;
+        }
+    }
+
+    &__title {
+        overflow: hidden;
+        max-height: 90px;
+        margin-bottom: 7px;
+
+        @media (min-width: $tablet) {
+            max-height: 166px;
+            margin-bottom: 12px;
+        }
+
+        @media (min-width: $laptop) {
+            max-height: 198px;
+            margin-bottom: 14px;
+        }
+    }
+
+    &__subtitle {
+        overflow: hidden;
+        max-height: 52px;
+        margin-bottom: 22px;
+
+        @media (min-width: $tablet) {
+            display: none;
+            max-height: 66px;
+        }
+
+        @media (min-width: $laptop) {
+            max-height: 78px;
+        }
+
+        &--md {
+            display: none;
+
+            @media (min-width: $tablet) {
+                display: block;
+            }
+        }
+    }
+
+    &__all {
+        display: none;
+        margin-left: 13px;
+
+        @media (min-width: $tablet) {
+            display: inline-block;
+        }
+
+        @media (min-width: $laptop) {
+            margin-left: 17px;
+        }
+    }
+}

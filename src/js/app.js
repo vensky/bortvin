@@ -1,48 +1,57 @@
 'use strict';
 
-const $btnPrev = document.querySelector('.slider__btn--prev');
-const $btnNext = document.querySelector('.slider__btn--next');
+const $overlay = document.querySelector('.overlay');
+const $btnOverlay = $overlay.querySelector('.overlay__btn');
 
-const $slideList = document.querySelector('.slider__slides');
-const $slides = $slideList.querySelectorAll('.slider__slide');
+const $slider = document.querySelector('.slider');
+const $slideList = $slider.querySelector('.slider__list');
+const $slides = $slideList.querySelectorAll('.slider__item');
+const slidesLen = $slides.length;
+const currentSlideClass = 'slider__item--shown';
+
+const $btnPrev = $slider.querySelector('.slider__btn--prev');
+const $btnNext = $slider.querySelector('.slider__btn--next');
+
+const $paginationList = $slider.querySelector('.slider__pagination');
+const $paginations = $paginationList.querySelectorAll('.slider__pagination-item');
+const currentPaginationClass = 'slider__pagination-item--current';
+
 let currentSlideIndex = 0;
 
-const $paginationList = document.querySelector('.slider__pagination');
-const $paginations = $paginationList.querySelectorAll('.slider__pagination-item');
+const goToSlide = (slideIndex) => {
+    $slides[currentSlideIndex].classList.remove(currentSlideClass);
 
-const goToSlide = (direction) => {
-    $slides[currentSlideIndex].classList.remove('slider__slide--shown');
-
-    for (let i = 0; i < $slides.length; i++) {
-        $paginations[i].classList.remove('slider__pagination-item--current');
+    for (let item of $paginations) {
+        item.classList.remove(currentPaginationClass);
     }
 
-    if (direction === 'next') {
-        currentSlideIndex = (currentSlideIndex + 1) % $slides.length;
-    }
-
-    if (direction === 'prev') {
-        currentSlideIndex = (currentSlideIndex - 1 + $slides.length) % $slides.length;
-    }
-
-    $slides[currentSlideIndex].classList.add('slider__slide--shown');
-    $paginations[currentSlideIndex].classList.add('slider__pagination-item--current');
+    currentSlideIndex = slideIndex  % slidesLen;
+    $slides[currentSlideIndex].classList.add(currentSlideClass);
+    $paginations[currentSlideIndex].classList.add(currentPaginationClass);
 }
 
-$btnNext.addEventListener('click', () => goToSlide('next'));
-$btnPrev.addEventListener('click', () => goToSlide('prev'));
-$paginationList.addEventListener('click', (event) => {
-    let paginationItem = event.target.closest('li');
+$btnOverlay.addEventListener('click', () => {
+    setTimeout(
+        () => $overlay.classList.add('overlay--hidden'),
+        5000
+    )
+});
 
-    if (paginationItem) {
-        currentSlideIndex = paginationItem.dataset.slideNumber - 1;
+$btnNext.addEventListener('click', () => goToSlide(currentSlideIndex + 1));
+$btnPrev.addEventListener('click', () => goToSlide(currentSlideIndex - 1 + slidesLen));
+
+$paginationList.addEventListener('click', (event) => {
+    let pagination = event.target.closest('.slider__pagination-item');
+
+    if (pagination) {
+        currentSlideIndex = pagination.dataset.slideNumber - 1;
 
         for (let i = 0; i < $slides.length; i++) {
-            $slides[i].classList.remove('slider__slide--shown');
-            $paginations[i].classList.remove('slider__pagination-item--current');
+            $slides[i].classList.remove(currentSlideClass);
+            $paginations[i].classList.remove(currentPaginationClass);
         }
 
-        $slides[currentSlideIndex].classList.add('slider__slide--shown');
-        $paginations[currentSlideIndex].classList.add('slider__pagination-item--current');
+        $slides[currentSlideIndex].classList.add(currentSlideClass);
+        $paginations[currentSlideIndex].classList.add(currentPaginationClass);
     }
 });
