@@ -20,5 +20,17 @@
 
     &__btn {
         margin: auto;
+
+        &--hidden {
+            display: none;
+        }
+    }
+
+    &__loader {
+        margin: auto;
+
+        &--hidden {
+            display: none;
+        }
     }
 }

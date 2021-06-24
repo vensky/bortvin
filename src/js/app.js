@@ -1,7 +1,8 @@
 'use strict';
 
 const $overlay = document.querySelector('.overlay');
-const $btnOverlay = $overlay.querySelector('.overlay__btn');
+const $overlayBtn = $overlay.querySelector('.overlay__btn');
+const $overlayLoader = $overlay.querySelector('.overlay__loader');
 
 const $slider = document.querySelector('.slider');
 const $slideList = $slider.querySelector('.slider__list');
@@ -30,7 +31,9 @@ const goToSlide = (slideIndex) => {
     $paginations[currentSlideIndex].classList.add(currentPaginationClass);
 }
 
-$btnOverlay.addEventListener('click', () => {
+$overlayBtn.addEventListener('click', () => {
+    $overlayBtn.classList.add('overlay__btn--hidden');
+    $overlayLoader.classList.remove('overlay__loader--hidden');
     setTimeout(
         () => $overlay.classList.add('overlay--hidden'),
         5000
