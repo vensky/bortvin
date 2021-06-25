@@ -18,6 +18,7 @@ const $paginations = $paginationList.querySelectorAll('.slider__pagination-item'
 const currentPaginationClass = 'slider__pagination-item--current';
 
 let currentSlideIndex = 0;
+let swipeDirection = 0;
 
 const goToSlide = (slideIndex) => {
     $slides[currentSlideIndex].classList.remove(currentSlideClass);
@@ -42,6 +43,14 @@ $overlayBtn.addEventListener('click', () => {
 
 $btnNext.addEventListener('click', () => goToSlide(currentSlideIndex + 1));
 $btnPrev.addEventListener('click', () => goToSlide(currentSlideIndex - 1 + slidesLen));
+
+$slideList.ondragstart = () => false;
+$slideList.addEventListener('pointerdown', (event) => {
+    swipeDirection = event.clientX;
+});
+$slideList.addEventListener('pointerup', (event) => {
+    (swipeDirection - event.clientX) >= 0 ? goToSlide(currentSlideIndex + 1) : goToSlide(currentSlideIndex - 1 + slidesLen);
+});
 
 $paginationList.addEventListener('click', (event) => {
     let pagination = event.target.closest('.slider__pagination-item');
